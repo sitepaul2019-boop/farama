@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fournitures Bureau & Scolaire – Orange Papier</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #2c2c2c;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ===== EN-TÊTE ===== */
+    header {
+      background: linear-gradient(145deg, #ff8c1a, #f57c00);
+      padding: 1.8rem 2rem 1.2rem 2rem;
+      box-shadow: 0 6px 14px rgba(255, 140, 0, 0.25);
+      border-bottom: 4px solid #ffffff;
+    }
+
+    .header-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+    }
+
+    .logo-titre h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      text-shadow: 3px 3px 0 #b85e00;
+      line-height: 1.2;
+    }
+
+    .logo-titre h1 i {
+      margin-right: 0.3rem;
+    }
+
+    .logo-titre .sous-titre {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #fff3e0;
+      margin-top: 0.2rem;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      list-style: none;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.15);
+      padding: 0.6rem 1.2rem;
+      border-radius: 40px;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      display: inline-block;
+      backdrop-filter: blur(2px);
+    }
+
+    nav ul li a:hover {
+      background-color: #ffffff;
+      color: #e06e00;
+      border-color: #ffffff;
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* ===== SECTION PRÉSENTATION ===== */
+    .presentation {
+      background: #ffffff;
+      margin: 2.5rem 2rem 1.5rem 2rem;
+      padding: 2.5rem 2rem;
+      border-radius: 48px 48px 48px 12px;
+      box-shadow: 0 10px 30px rgba(255, 140, 0, 0.12);
+      border: 2px solid #ffddb0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .presentation::before {
+      content: "\f303\f02d"; /* pencil + book */
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      right: 2rem;
+      top: 1rem;
+      font-size: 4rem;
+      opacity: 0.15;
+      transform: rotate(5deg);
+      pointer-events: none;
+    }
+
+    .presentation h2 {
+      font-size: 2rem;
+      color: #e06e00;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .presentation h2 span {
+      background: #ff8c1a;
+      color: white;
+      font-size: 1.4rem;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(255, 140, 0, 0.4);
+    }
+
+    .presentation p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: #3e3e3e;
+      max-width: 85%;
+      font-weight: 400;
+      border-left: 5px solid #ff8c1a;
+      padding-left: 1.5rem;
+      background: #fffaf3;
+      padding: 1.2rem 1.8rem;
+      border-radius: 0 30px 30px 0;
+    }
+
+    .presentation p strong {
+      color: #c95f00;
+      font-weight: 700;
+    }
+
+    /* ===== CARTES ===== */
+    .cartes {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin: 1.5rem 2rem 3rem 2rem;
+    }
+
+    .carte {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2rem 1.8rem;
+      flex: 1 1 260px;
+      max-width: 340px;
+      box-shadow: 0 16px 28px -6px rgba(255, 140, 0, 0.22);
+      border: 2px solid #ffddb0;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      border-top: 10px solid #ff8c1a;
+    }
+
+    .carte:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 36px -8px rgba(230, 110, 0, 0.35);
+      border-color: #ffb86b;
+    }
+
+    .carte h3 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #e06e00;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .carte h3 .icone {
+      font-size: 2.2rem;
+      filter: drop-shadow(0 2px 4px rgba(255, 140, 0, 0.4));
+    }
+
+    .carte p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #2f2f2f;
+      flex: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .carte .badge {
+      align-self: flex-start;
+      background: #ffe8d4;
+      color: #b85e00;
+      font-weight: 600;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      border: 1px solid #ffc78a;
+      letter-spacing: 0.3px;
+      margin-top: auto;
+    }
+
+    .carte .badge i {
+      margin-right: 0.4rem;
+    }
+
+    /* ===== GALERIE D'IMAGES ===== */
+    .galerie {
+      margin: 1rem 2rem 3rem 2rem;
+      padding: 2.5rem 2rem;
+      background: #fffaf3;
+      border-radius: 40px 40px 40px 12px;
+      border: 2px solid #ffddb0;
+      box-shadow: 0 10px 28px rgba(255, 140, 0, 0.1);
+    }
+
+    .galerie h2 {
+      font-size: 2rem;
+      color: #e06e00;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 4px solid #ff8c1a;
+      width: fit-content;
+    }
+
+    .galerie h2 span {
+      background: #ff8c1a;
+      color: #ffffff;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 8px rgba(255, 140, 0, 0.4);
+    }
+
+    .galerie-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .galerie-item {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px -6px rgba(255, 140, 0, 0.25);
+      border: 3px solid #ffffff;
+      transition: all 0.3s ease;
+      position: relative;
+      background: #ffffff;
+      aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .galerie-item:hover {
+      transform: scale(1.03) translateY(-6px);
+      box-shadow: 0 22px 34px -8px rgba(230, 110, 0, 0.4);
+      border-color: #ffb86b;
+      z-index: 2;
+    }
+
+    .galerie-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+      position: absolute;
+      inset: 0;
+    }
+
+    .galerie-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .galerie-item .legende {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(230, 110, 0, 0.9), transparent);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 1.2rem 1rem 0.8rem 1rem;
+      text-align: center;
+      letter-spacing: 0.3px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .galerie-item .icone-fallback {
+      font-size: 5rem;
+      color: #ff8c1a;
+      filter: drop-shadow(0 6px 8px rgba(255, 140, 0, 0.3));
+      transition: transform 0.3s ease;
+      z-index: 1;
+    }
+
+    .galerie-item:hover .icone-fallback {
+      transform: scale(1.1) rotate(-3deg);
+    }
+
+    /* ===== PIED DE PAGE ===== */
+    footer {
+      background: #f57c00; 
+      background: linear-gradient(135deg, #e06e00, #ff8c1a);
+      color: #ffffff;
+      padding: 2.5rem 2rem 1.8rem 2rem;
+      margin-top: auto;
+      border-top: 6px solid #ffffff;
+      box-shadow: 0 -6px 16px rgba(255, 140, 0, 0.25);
+    }
+
+    .footer-contenu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contact h4 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.3px;
+      color: #fff3e0;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .contact h4 span {
+      background: #ffffff;
+      color: #e06e00;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .contact p {
+      font-size: 1.15rem;
+      margin: 0.4rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-weight: 500;
+    }
+
+    .contact p .emoji {
+      font-size: 1.4rem;
+      width: 30px;
+      text-align: center;
+    }
+
+    .footer-droite {
+      text-align: right;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #ffe8d4;
+    }
+
+    .footer-droite .copy {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-top: 0.8rem;
+      border-top: 1px dashed #ffd19b;
+      padding-top: 0.8rem;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 750px) {
+      header {
+        padding: 1.3rem 1.2rem;
+      }
+
+      .header-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      nav ul {
+        gap: 0.8rem;
+      }
+
+      nav ul li a {
+        padding: 0.5rem 1rem;
+        font-size: 0.95rem;
+      }
+
+      .presentation {
+        margin: 1.5rem 1rem;
+        padding: 1.8rem 1.2rem;
+      }
+
+      .presentation p {
+        max-width: 100%;
+        padding: 1rem 1.2rem;
+        font-size: 1rem;
+      }
+
+      .presentation h2 {
+        font-size: 1.6rem;
+      }
+
+      .cartes {
+        margin: 1rem 1rem 2rem 1rem;
+        gap: 1.5rem;
+      }
+
+      .carte {
+        max-width: 100%;
+        padding: 1.5rem 1.3rem;
+      }
+
+      .galerie {
+        margin: 1rem 1rem 2rem 1rem;
+        padding: 1.8rem 1.2rem;
+      }
+
+      .galerie h2 {
+        font-size: 1.6rem;
+      }
+
+      .galerie h2 span {
+        width: 40px;
+        height: 40px;
+        font-size: 1.3rem;
+      }
+
+      .galerie-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 1rem;
+      }
+
+      .footer-contenu {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .footer-droite {
+        text-align: left;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo-titre h1 {
+        font-size: 1.7rem;
+      }
+
+      .presentation h2 {
+        font-size: 1.4rem;
+      }
+
+      .carte h3 {
+        font-size: 1.4rem;
+      }
+
+      .galerie h2 {
+        font-size: 1.3rem;
+      }
+
+      .galerie-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+      }
+
+      .galerie-item .legende {
+        font-size: 0.8rem;
+        padding: 0.8rem 0.5rem 0.5rem 0.5rem;
+      }
+
+      .galerie-item .icone-fallback {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- EN-TÊTE avec titre et menu -->
+  <header>
+    <div class="header-top">
+      <div class="logo-titre">
+        <h1><i class="fa-solid fa-paperclip"></i> Fournitures<br>Bureau & Scolaire</h1>
+        <div class="sous-titre">Orange Papier — tout pour la rentrée</div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Accueil</a></li>
+          <li><a href="#">Produits</a></li>
+          <li><a href="#">Promotions</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- SECTION PRÉSENTATION -->
+  <section class="presentation">
+    <h2>
+      <span><i class="fa-solid fa-thumbtack"></i></span> 
+      Tout l'essentiel pour travailler et étudier
+    </h2>
+    <p>
+      <strong>Orange Papier</strong> réunit plus de 2000 références de fournitures scolaires et de bureau : 
+      cahiers, stylos, classeurs, ramettes, articles de classement et bien plus. 
+      Qualité professionnelle, prix justes et livraison rapide partout en France.
+    </p>
+  </section>
+
+  <!-- 3 CARTES avec titre et texte -->
+  <section class="cartes">
+    <!-- Carte 1 -->
+    <article class="carte">
+      <h3>
+        <span class="icone"><i class="fa-solid fa-school"></i></span> 
+        Scolaire
+      </h3>
+      <p>
+        Cahiers, protège-cahiers, trousses, stylos billes, crayons, gommes, 
+        règles, compas, kits de géométrie. Tout pour les élèves de la maternelle au lycée.
+      </p>
+      <div class="badge"><i class="fa-solid fa-book"></i> Plus de 800 références</div>
+    </article>
+
+    <!-- Carte 2 -->
+    <article class="carte">
+      <h3>
+        <span class="icone"><i class="fa-solid fa-briefcase"></i></span> 
+        Bureau
+      </h3>
+      <p>
+        Classeurs, chemises, pochettes, blocs-notes, ramettes A4, 
+        agrafeuses, perforateurs, stylos plume et recharges. Équipez votre espace pro.
+      </p>
+      <div class="badge"><i class="fa-solid fa-briefcase"></i> Qualité professionnelle</div>
+    </article>
+
+    <!-- Carte 3 -->
+    <article class="carte">
+      <h3>
+        <span class="icone"><i class="fa-solid fa-scissors"></i></span> 
+        Créatif & Organisation
+      </h3>
+      <p>
+        Feutres, crayons de couleur, pâte à modeler, ardoises, 
+        plannings, corbeilles, boîtes d'archives. Laissez parler votre créativité.
+      </p>
+      <div class="badge"><i class="fa-solid fa-palette"></i> Nouveautés chaque mois</div>
+    </article>
+  </section>
+
+  <!-- GALERIE D'IMAGES -->
+  <section class="galerie">
+    <h2>
+      <span><i class="fa-solid fa-images"></i></span> 
+      Notre galerie produits
+    </h2>
+    <div class="galerie-grid">
+      <!-- Image 1 -->
+      <div class="galerie-item">
+        <div class="icone-fallback"><i class="fa-solid fa-pencil"></i></div>
+        <img src="https://picsum.photos/seed/crayons/600/450" alt="Crayons et stylos" loading="lazy" onerror="this.style.display='none'">
+        <div class="legende">Crayons & stylos</div>
+      </div>
+      <!-- Image 2 -->
+      <div class="galerie-item">
+        <div class="icone-fallback"><i class="fa-solid fa-book"></i></div>
+        <img src="https://picsum.photos/seed/cahiers/600/450" alt="Cahiers et carnets" loading="lazy" onerror="this.style.display='none'">
+        <div class="legende">Cahiers & carnets</div>
+      </div>
+      <!-- Image 3 -->
+      <div class="galerie-item">
+        <div class="icone-fallback"><i class="fa-solid fa-folder-open"></i></div>
+        <img src="https://picsum.photos/seed/classeurs/600/450" alt="Classeurs et rangement" loading="lazy" onerror="this.style.display='none'">
+        <div class="legende">Classeurs & rangement</div>
+      </div>
+      <!-- Image 4 -->
+      <div class="galerie-item">
+        <div class="icone-fallback"><i class="fa-solid fa-palette"></i></div>
+        <img src="https://picsum.photos/seed/creatif/600/450" alt="Fournitures créatives" loading="lazy" onerror="this.style.display='none'">
+        <div class="legende">Créatif & loisirs</div>
+      </div>
+      <!-- Image 5 -->
+      <div class="galerie-item">
+        <div class="icone-fallback"><i class="fa-solid fa-paperclip"></i></div>
+        <img src="https://picsum.photos/seed/accessoires/600/450" alt="Accessoires de bureau" loading="lazy" onerror="this.style.display='none'">
+        <div class="legende">Accessoires bureau</div>
+      </div>
+      <!-- Image 6 -->
+      <div class="galerie-item">
+        <div class="icone-fallback"><i class="fa-solid fa-school"></i></div>
+        <img src="https://picsum.photos/seed/cartable/600/450" alt="Cartables et sacs" loading="lazy" onerror="this.style.display='none'">
+        <div class="legende">Cartables & sacs</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIED DE PAGE avec contact -->
+  <footer>
+    <div class="footer-contenu">
+      <div class="contact">
+        <h4>
+          <span><i class="fa-solid fa-phone"></i></span> 
+          Contactez-nous
+        </h4>
+        <p><span class="emoji"><i class="fa-solid fa-envelope"></i></span> contact@orange-papier.fr</p>
+        <p><span class="emoji"><i class="fa-solid fa-mobile-screen"></i></span> 76055568 71531963</p>
+        <p><span class="emoji"><i class="fa-solid fa-location-dot"></i></span> secteur9 bounouna, 75000 Paris</p>
+      </div>
+      <div class="footer-droite">
+        <p>Ouvert du lundi au samedi<br>9h – 19h</p>
+        <p class="copy">© 2026 Orange Papier – Fournitures bureau & scolaire</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
